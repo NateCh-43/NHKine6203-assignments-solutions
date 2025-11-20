@@ -1,0 +1,22 @@
+function dayComparer
+    % Defines the subject by ID and the data for days 1 thru 3
+    subjectIds = input('Enter subject IDs as a vector: ');
+    day1 = input('Data for day 1 as vector: ');
+    day2 = input('Data for day 2 as vector: ');
+    day3 = input("Data for day 3 as vector");
+
+    % Empty array to store the IDs of subjects that increased values
+    increasedSubjects = [];
+
+    % Loop for individual subject to compare values
+    for i = 1:length(subjectIds)
+        if day2(i) > day1(i)
+            increasedSubjectsDay1 = [increasedSubjects; subjectIds(i)];
+        elseif day3(i) > day2(i)
+            increasedSubjectsDay2 = [increasedSubjects; subjectIds(i)];
+        end
+    end
+
+    % Display result including subject IDs
+    disp('Subjects with an increase from day 1 to 2 or 2 to 3:');
+    disp(increasedSubjects);
