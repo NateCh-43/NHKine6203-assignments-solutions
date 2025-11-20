@@ -1,0 +1,25 @@
+function genderIsoCalc
+% male and female data for each of the 3 days of lifting
+maleData = rand(10, 3); % 10 males, 3 days of lifting
+femaleData = rand(10, 3); % 10 females, 3 days of lifting
+
+% Mean isometric strength values for male and female individuals
+maleIsoIndMeans = mean(maleData, 2);
+femaleIsoIndMeans = mean(femaleData, 2);
+
+% Calculates the group mean isometric strength values for males and females
+maleGroupIsoMean = mean(maleIsoIndMeans);
+femaleGroupIsoMean = mean(femaleIsoIndMeans);
+% Display the group mean isometric strength values
+fprintf('Male Group Mean Isometric Strength: %.2f\n', maleGroupIsoMean);
+fprintf('Female Group Mean Isometric Strength: %.2f\n', femaleGroupIsoMean);
+% Normalizes isokinetic data for each day
+normMaleData = maleData ./ sum(maleData, 1);
+normFemaleData = femaleData ./ sum(femaleData, 1);
+
+% Calculates the group mean for each day
+normDay1mean = mean(normMaleData(:, 1)) + mean(normFemaleData(:, 1)); %Mean for Day1
+normDay2mean = mean(normMaleData(:, 2)) + mean(normFemaleData(:, 2)); %Day2 mean
+normDay3mean = mean(normMaleData(:, 3)) + mean(normFemaleData(:, 3)); %day3 mean
+display(normDay1mean, normDay2mean, normDay3mean)
+end
